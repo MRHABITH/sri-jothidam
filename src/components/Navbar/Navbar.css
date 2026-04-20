@@ -1,0 +1,249 @@
+/* ---------- Navbar Wrapper ---------- */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--nav-height);
+  z-index: 1000;
+  background: rgba(13, 10, 30, 0.75);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+  transition: background 0.4s ease, box-shadow 0.4s ease;
+}
+
+.navbar.scrolled {
+  background: rgba(13, 10, 30, 0.97);
+  box-shadow: 0 4px 32px rgba(201, 168, 76, 0.12);
+}
+
+/* ---------- Inner Container ---------- */
+.navbar-container {
+  max-width: 1280px;
+  margin: 0 auto;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2rem;
+}
+
+/* ---------- Brand / Logo (Left) ---------- */
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+  flex-shrink: 0;
+}
+
+.brand-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+  filter: drop-shadow(0 0 8px rgba(250, 183, 1, 0.6));
+  animation: pulse-glow 3s ease-in-out infinite;
+}
+
+.brand-name {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  background: linear-gradient(135deg, var(--gold-light) 0%, var(--gold) 50%, var(--gold-dark) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: none;
+  transition: opacity 0.3s;
+}
+
+.navbar-brand:hover .brand-name {
+  opacity: 0.85;
+}
+
+/* ---------- Nav Links (Right) ---------- */
+.navbar-nav {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  gap: 0.25rem;
+}
+
+.nav-item {
+  position: relative;
+}
+
+.nav-link {
+  display: inline-block;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--text-muted);
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  transition: color 0.3s ease, background 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Gold underline animation */
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 50%;
+  transform: translateX(-50%) scaleX(0);
+  width: 60%;
+  height: 1.5px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  border-radius: 2px;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+  color: var(--gold-light);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+/* ---------- Contact Us — Special Button ---------- */
+.nav-link.contact-btn {
+  color: var(--deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  border-radius: 30px;
+  padding: 0.45rem 1.2rem;
+  font-weight: 600;
+  box-shadow: 0 2px 16px rgba(201, 168, 76, 0.35);
+  transition: transform 0.2s ease, box-shadow 0.3s ease, opacity 0.3s;
+}
+
+.nav-link.contact-btn::after {
+  display: none;
+}
+
+.nav-link.contact-btn:hover {
+  color: var(--deep);
+  background: linear-gradient(135deg, var(--gold-light), var(--gold));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201, 168, 76, 0.55);
+  opacity: 0.9;
+}
+
+/* ---------- Hamburger (Mobile) ---------- */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  padding: 4px;
+}
+
+.hamburger span {
+  display: block;
+  width: 26px;
+  height: 2px;
+  background: var(--gold);
+  border-radius: 2px;
+  transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+.hamburger.open span:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger.open span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.open span:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+}
+
+/* ---------- Mobile Menu ---------- */
+@media (max-width: 768px) {
+  .hamburger {
+    display: flex;
+  }
+
+  /* Force gold color on hamburger bars */
+  .hamburger span {
+    background: #f5b60b !important;
+    background-color: #f5b60b !important;
+  }
+
+  /* Force brand gradient text on mobile webkit */
+  .brand-name {
+    color: #f5b60b;
+    background: linear-gradient(135deg, #fcb502 0%, #f5b60b 50%, #c9a84c 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  /* ── Mobile dropdown panel ── */
+  .navbar-nav {
+    position: fixed;
+    top: var(--nav-height);
+    left: 0;
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0;
+    /* Solid dark background — critical for visibility */
+    background: rgba(8, 6, 22, 0.98);
+    border-top: 1px solid rgba(201, 168, 76, 0.25);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.7);
+    padding: 0.5rem 1.5rem 1.5rem;
+    z-index: 999;
+    /* Hidden state */
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition:
+      max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+      opacity 0.3s ease,
+      padding 0.3s ease;
+  }
+
+  /* Open state — dropdown visible */
+  .navbar-nav.open {
+    max-height: 400px;
+    opacity: 1;
+    pointer-events: all;
+    padding: 0.75rem 1.5rem 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 1rem;
+    padding: 0.85rem 0.5rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    color: #c8b89a;
+  }
+
+  .nav-link:hover,
+  .nav-link.active {
+    color: #fcb502;
+    background: rgba(201, 168, 76, 0.07);
+    border-radius: 6px;
+  }
+
+  .nav-link.contact-btn {
+    margin-top: 0.75rem;
+    text-align: center;
+    border-bottom: none;
+    color: #0d0a1e;
+    border-radius: 30px;
+  }
+}

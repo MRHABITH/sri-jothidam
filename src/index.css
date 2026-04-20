@@ -1,0 +1,189 @@
+/* ============================================
+   index.css — Vishnu Maya Jothidam Globals
+   ============================================ */
+
+/* ---------- Reset & Base ---------- */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --gold:        #f5b60b;
+  --gold-light:  #fcb502;
+  --gold-dark:   #70551c;
+  --deep:        #0d0a1e;
+  --deep2:       #160f30;
+  --text-light:  #f5f0e8;
+  --text-muted:  #b8a898;
+  --nav-height:  80px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: radial-gradient(ellipse at top, #1a0a2e 0%, #0d0a1e 60%, #060410 100%);
+  color: var(--text-light);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ── Hide scrollbar (keep scroll functionality) ── */
+html {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE / Edge */
+}
+html::-webkit-scrollbar {
+  display: none;                /* Chrome / Safari */
+}
+
+/* ── Suppress text-cursor blink on non-input elements ── */
+*:not(input):not(textarea):not([contenteditable]) {
+  caret-color: transparent;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Restore normal behaviour for actual form fields */
+input,
+textarea,
+[contenteditable] {
+  caret-color: #c9a84c;
+  -webkit-user-select: text;
+  user-select: text;
+}
+
+/* ── Starfield background ── */
+canvas#global-stars {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ── Global Layout ── */
+#root {
+  position: relative;
+  z-index: 1;
+}
+
+main {
+  padding-top: var(--nav-height);
+}
+
+/* ── Utility Layout ── */
+.section {
+  position: relative;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 5rem 2rem;
+}
+
+.section-inner {
+  text-align: center;
+  max-width: 900px;
+  width: 100%;
+}
+
+.section-tag {
+  font-size: 0.78rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-size: clamp(1.6rem, 4vw, 2.8rem);
+  font-weight: 600;
+  background: linear-gradient(135deg, #f7b502 0%, #eea81c 50%, #ffd000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 1rem;
+}
+
+.section-divider {
+  width: 60px;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  margin: 0 auto 1.4rem;
+  border-radius: 2px;
+}
+
+.section-desc {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--text-muted);
+  line-height: 1.8;
+}
+
+/* ── Global Animations ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { filter: drop-shadow(0 0 6px rgba(201, 168, 76, 0.5)); }
+  50%      { filter: drop-shadow(0 0 16px rgba(201, 168, 76, 0.9)); }
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ══════════════════════════════════════
+   GLOBAL MOBILE RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 768px) {
+  :root {
+    --nav-height: 64px;
+  }
+
+  .section {
+    padding: 4rem 1.2rem;
+    min-height: auto;
+  }
+
+  .section-inner {
+    max-width: 100%;
+    padding: 0 0.5rem;
+  }
+
+  .section-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+  }
+
+  .section-title {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .section-desc {
+    font-size: 0.9rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 3rem 1rem;
+  }
+
+  .section-title {
+    font-size: clamp(1.25rem, 7vw, 1.8rem);
+  }
+}

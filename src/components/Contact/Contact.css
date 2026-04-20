@@ -1,0 +1,362 @@
+/* ══════════════════════════════════════
+   CONTACT — Two-panel layout
+══════════════════════════════════════ */
+
+/* Override section-inner width for full two-panel */
+.contact-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+  border-radius: 24px;
+  overflow: hidden;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* ══════════════════════════════════════
+   LEFT PANEL — Visual / Promo
+══════════════════════════════════════ */
+.contact-visual {
+  position: relative;
+  overflow: hidden;
+  min-height: 580px;
+}
+
+/* Background astrology photo */
+.cv-bg {
+  position: absolute;
+  inset: 0;
+  background-image: url('https://images.unsplash.com/photo-1519681393784-d120267933ba?w=900&q=85');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.6s ease;
+}
+
+.contact-visual:hover .cv-bg {
+  transform: scale(1.04);
+}
+
+/* Deep dark gradient overlay — more intense at bottom */
+.cv-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    160deg,
+    rgba(6, 2, 20, 0.55) 0%,
+    rgba(6, 2, 20, 0.75) 50%,
+    rgba(6, 2, 20, 0.92) 100%
+  );
+}
+
+/* Content layer */
+.cv-content {
+  position: relative;
+  z-index: 2;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 3rem 2.5rem;
+  gap: 1rem;
+}
+
+/* Animated compass SVG — top right */
+.cv-star {
+  position: absolute;
+  top: 2rem;
+  right: 2rem;
+  width: 80px;
+  height: 80px;
+  opacity: 0.65;
+  animation: cvStarSpin 20s linear infinite;
+}
+
+@keyframes cvStarSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.cv-eyebrow {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: rgba(201, 168, 76, 0.8);
+}
+
+.cv-heading {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 700;
+  color: #f5f0e8;
+  line-height: 1.2;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.6);
+}
+
+.cv-gold {
+  color: #c9a84c;
+}
+
+.cv-tagline {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem;
+  color: rgba(220, 210, 185, 0.8);
+  line-height: 1.7;
+  text-shadow: 0 1px 6px rgba(0,0,0,0.5);
+}
+
+/* Contact info badges */
+.cv-badges {
+  display: flex;
+  flex-direction: column;
+  gap: 0.55rem;
+  margin-top: 0.5rem;
+}
+
+.cv-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(220, 205, 170, 0.82);
+  text-decoration: none;
+  transition: color 0.25s ease;
+}
+
+.cv-badge:hover {
+  color: #c9a84c;
+}
+
+.cv-badge-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   RIGHT PANEL — Form
+══════════════════════════════════════ */
+.contact-form-panel {
+  background: rgba(10, 7, 25, 0.85);
+  backdrop-filter: blur(16px);
+  padding: 3rem 2.8rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0;
+}
+
+.cfp-header {
+  margin-bottom: 2rem;
+}
+
+.cfp-title {
+  font-family: 'DM Sans', sans-serif;
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 700;
+  background: linear-gradient(135deg, #f7b502 0%, #eea81c 50%, #ffd000 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: 0.6rem;
+}
+
+.cfp-sub {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.875rem;
+  color: var(--text-muted, rgba(200,185,155,0.7));
+  line-height: 1.65;
+}
+
+/* ── Form fields ── */
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.form-group {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.form-group input,
+.form-group textarea {
+  width: 100%;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
+  color: var(--text-light, #f5f0e8);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  padding: 0.5rem 0;
+  outline: none;
+  transition: border-color 0.3s ease;
+  box-sizing: border-box;
+}
+
+.form-group textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-group label {
+  position: absolute;
+  top: 0.5rem;
+  left: 0;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 1rem;
+  color: rgba(200, 185, 155, 0.65);
+  pointer-events: none;
+  transition: all 0.3s ease;
+}
+
+/* Floating label */
+.form-group input:focus ~ label,
+.form-group input:not(:placeholder-shown) ~ label,
+.form-group textarea:focus ~ label,
+.form-group textarea:not(:placeholder-shown) ~ label {
+  top: -1.2rem;
+  font-size: 0.72rem;
+  color: #c9a84c;
+  letter-spacing: 0.06em;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+  border-bottom-color: #c9a84c;
+}
+
+/* ── Send Message button ── */
+.submit-btn {
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #1a0f05;
+  background: linear-gradient(135deg, #f0d080, #c9a84c);
+  border: none;
+  border-radius: 30px;
+  padding: 0.95rem;
+  cursor: pointer;
+  box-shadow: 0 4px 20px rgba(201, 168, 76, 0.35);
+  transition: transform 0.22s ease, box-shadow 0.28s ease;
+  margin-bottom: 0.9rem;
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(201, 168, 76, 0.55);
+}
+
+.submit-btn:active {
+  transform: translateY(1px);
+}
+
+/* ── WhatsApp button ── */
+.whatsapp-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  width: 100%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #fff;
+  background: linear-gradient(135deg, #25d366, #128c7e);
+  border-radius: 30px;
+  padding: 0.9rem;
+  text-decoration: none;
+  box-shadow: 0 4px 18px rgba(37, 211, 102, 0.3);
+  transition: transform 0.22s ease, box-shadow 0.28s ease;
+}
+
+.whatsapp-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 28px rgba(37, 211, 102, 0.5);
+}
+
+.wa-icon {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+/* ══════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════ */
+@media (max-width: 860px) {
+  .contact-wrapper {
+    grid-template-columns: 1fr;
+    border-radius: 16px;
+  }
+
+  .contact-visual {
+    min-height: 320px;
+  }
+
+  .cv-content {
+    justify-content: flex-end;
+    padding: 2rem 1.8rem;
+  }
+
+  .cv-heading {
+    font-size: clamp(1.5rem, 5vw, 2.2rem);
+  }
+
+  .contact-form-panel {
+    padding: 2.5rem 2rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-wrapper {
+    border-radius: 12px;
+  }
+
+  .contact-visual {
+    min-height: 260px;
+  }
+
+  .cv-content {
+    padding: 1.5rem 1.2rem;
+  }
+
+  .cv-star {
+    width: 52px;
+    height: 52px;
+    top: 1rem;
+    right: 1rem;
+  }
+
+  .cv-heading {
+    font-size: clamp(1.3rem, 7vw, 1.8rem);
+  }
+
+  .cv-tagline {
+    font-size: 0.82rem;
+  }
+
+  .cv-badge {
+    font-size: 0.78rem;
+  }
+
+  .contact-form-panel {
+    padding: 2rem 1.2rem;
+  }
+
+  .cfp-sub {
+    font-size: 0.82rem;
+  }
+
+  .submit-btn {
+    font-size: 0.84rem;
+    padding: 0.85rem;
+  }
+}

@@ -1,0 +1,162 @@
+/* ── Services Grid — 3 columns ── */
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+}
+
+/* ── Card shell ── */
+.service-card {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  min-height: 320px;
+  cursor: default;
+  border: 1px solid rgba(201, 168, 76, 0.15);
+  transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+}
+
+/* Photo layer */
+.service-card-bg {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
+/* Dark gradient overlay — bottom-heavy so text is always readable */
+.service-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(6, 2, 16, 0.92) 0%,
+    rgba(6, 2, 16, 0.65) 45%,
+    rgba(6, 2, 16, 0.25) 100%
+  );
+  transition: background 0.35s ease;
+}
+
+/* Text content sits above bg + overlay */
+.service-card-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+  min-height: 320px;
+  padding: 1.8rem 1.6rem;
+}
+
+/* Hover: zoom photo, deepen overlay, lift card */
+.service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 28px rgba(201, 168, 76, 0.2);
+  border-color: rgba(201, 168, 76, 0.45);
+}
+
+.service-card:hover .service-card-bg {
+  transform: scale(1.06);
+}
+
+.service-card:hover .service-card-overlay {
+  background: linear-gradient(
+    to top,
+    rgba(6, 2, 16, 0.96) 0%,
+    rgba(6, 2, 16, 0.72) 50%,
+    rgba(6, 2, 16, 0.35) 100%
+  );
+}
+
+/* ── Icon ── */
+.service-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.9rem;
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.6));
+  line-height: 1;
+}
+
+/* ── Title ── */
+.service-title {
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+  color: #f0d080;
+  margin-bottom: 0.75rem;
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+}
+
+/* ── Description ── */
+.service-text {
+  font-size: 0.88rem;
+  color: rgba(220, 210, 190, 0.85);
+  line-height: 1.65;
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.7);
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease, opacity 0.35s ease 0.05s;
+}
+
+/* Reveal desc on hover */
+.service-card:hover .service-text {
+  max-height: 120px;
+  opacity: 1;
+}
+
+/* ── Gold accent bar at card bottom on hover ── */
+.service-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #c9a84c, #f0d080, #c9a84c);
+  transition: width 0.4s ease;
+}
+
+.service-card:hover::after {
+  width: 100%;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1100px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.2rem;
+  }
+  .service-card,
+  .service-card-content {
+    min-height: 280px;
+  }
+}
+
+@media (max-width: 480px) {
+  .services-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  .service-card,
+  .service-card-content {
+    min-height: 240px;
+  }
+  .service-title {
+    font-size: 1rem;
+  }
+  /* Always show desc on mobile (no hover) */
+  .service-text {
+    max-height: 120px;
+    opacity: 1;
+  }
+}
