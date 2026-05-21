@@ -166,7 +166,7 @@ const Hero = () => {
       {/* RIGHT — Text Content */}
       <div className="hero-right">
         <p className="hero-eyebrow">✦ Vedic Astrology &amp; Spiritual Guidance ✦</p>
-        <h1 className="hero-title">Vishnu Maya<br />Jothidam</h1>
+        <h1 className="hero-title">Sri<br />Jothidam</h1>
         <p className="hero-sub">
           Unlock the secrets of the cosmos.<br />
           Authentic Jyotish readings, horoscope analysis,<br />
