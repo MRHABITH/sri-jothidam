@@ -31,7 +31,7 @@ const Navbar = () => {
         {/* LEFT: Brand Name */}
         <a href="#home" className="navbar-brand" id="brand-logo" aria-label="Vishnu Maya Jothidam Home" onClick={closeMobileMenu}>
           <span className="brand-icon"></span>
-          <span className="brand-name">Vishnu Maya Jothidam</span>
+          <span className="brand-name">Sri Jothidam</span>
         </a>
 
         {/* Hamburger (mobile) */}
