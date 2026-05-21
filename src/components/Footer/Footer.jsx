@@ -78,7 +78,7 @@ const Footer = () => (
         <div className="footer-brand">
           <CompassLogo />
           <div className="footer-brand-text">
-            <span className="footer-brand-name">Vishnumaya Jyothidam</span>
+            <span className="footer-brand-name">Sri Jothidam</span>
             <span className="footer-brand-tagline">AUTHENTIC TRADITIONAL ASTROLOGY</span>
           </div>
         </div>
